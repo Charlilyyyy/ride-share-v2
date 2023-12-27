@@ -15,3 +15,4 @@ use App\Http\Controllers\TripController;
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login/verify', [LoginController::class, 'verify'])->name('verifyLoginCode');
 Route::post('/setName', [LoginController::class, 'setName'])->name('setName');
+Route::post('/setDriverData', [DriverController::class, 'setDriverData'])->name('setDriverData');

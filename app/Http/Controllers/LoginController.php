@@ -71,7 +71,6 @@ class LoginController extends Controller
         ]);
 
         // return 'pop';
-        return $request;
 
         $user = User::where('phone',$request->phone)->first();
 

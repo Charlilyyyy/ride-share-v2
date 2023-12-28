@@ -16,10 +16,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->integer('year');
-            $table->string('make');
+            $table->string('brand');
             $table->string('model');
             $table->string('color');
-            $table->string('license_plate');
+            $table->string('plate_number');
             $table->timestamps();
         });
     }

@@ -40,6 +40,8 @@ import { useCredentialsStore } from '@rideShare/store/credentials.js'
 
 const router = useRouter()
 
+const { credentialsUser,setUser } = useCredentialsStore()
+
 onMounted(() => {
     if(localStorage.getItem('token')){
         router.push({
@@ -48,10 +50,10 @@ onMounted(() => {
     }
 })
 
-const credentials = reactive({
+const credentials = {
     phone: null,
     login_code: null
-})
+}
 
 const waitingOnVerification = ref(false)
 
@@ -71,18 +73,18 @@ const handleReqCode = () => {
 
 const handleVerifyCode = () => {
     const baseURL = window.location.protocol+"//"+window.location.host+"/api/login/verify"
-    const userCred = useCredentialsStore()
+    // const userCred = useCredentialsStore()
     axios.post(baseURL, credentials)
         .then((response) => {
-            console.log(response.data);
             localStorage.setItem('token', response.data)
-            console.log(userCred.credentialsUser);
-            userCred.$patch({
-                credentialsUser: {
-                    phone: credentials.phone
-                }
+            // userCred.$patch({
+            //     credentialsUser: {
+            //         phone: credentials.phone
+            //     }
+            // })
+            setUser({
+                phone: credentials.phone
             })
-            console.log(userCred.credentialsUser);
             router.push({
                 name: 'dashboard'
             })

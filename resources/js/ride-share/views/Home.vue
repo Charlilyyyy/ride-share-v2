@@ -22,13 +22,8 @@
     </div>
   </template>
   
-  <script>
-  // Import necessary modules from Vue
-  import { ref } from 'vue';
+  <script setup>
   
-  export default {
-    // Component options
-  }
   </script>
   
   <style>

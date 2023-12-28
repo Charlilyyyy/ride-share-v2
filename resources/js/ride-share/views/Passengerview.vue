@@ -11,6 +11,7 @@
                     <FormInput
                         :size="50"
                     />
+                    
                 </div>
             </div>
         </div>
@@ -19,6 +20,15 @@
 </template>
 
 <script setup>
-import { ref,reactive } from 'vue'
+import { ref,reactive,onMounted} from 'vue'
 import FormInput from "@rideShare/components/FormInput.vue"
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
+
+
+
+// const onPlaceChanged = (place) => {
+//       // Handle the selected place object
+//       console.log('Place changed:', place);
+//     }
+
 </script>

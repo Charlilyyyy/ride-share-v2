@@ -5,10 +5,15 @@ export const useCredentialsStore = defineStore('', () => {
     
     const credentialsUser = reactive({
         name: '',
-        phone: null
+        phone: null,
     })
 
+    const setUser = (userData) => {
+        Object.assign(credentialsUser,userData)
+    }
+
     return {
-        credentialsUser
+        credentialsUser,
+        setUser
     }
 })

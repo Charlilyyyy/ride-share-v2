@@ -56,6 +56,7 @@ import { ref,reactive } from 'vue'
 import FormInput from "@rideShare/components/FormInput.vue"
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import { useCredentialsStore } from '@rideShare/store/credentials.js'
 
 const driverData = reactive({
     fullName: '',
@@ -66,9 +67,18 @@ const driverData = reactive({
     plateNumber: ''
 })
 
+const router = useRouter()
+
+const userCred = useCredentialsStore()
+
+const userDriver = reactive({
+    driver: driverData,
+    user: userCred
+})
+
 const submitDriverData = () => {
     const baseUrl = window.location.protocol+"//"+window.location.host+"/api/setDriverData"
-    axios.post(baseUrl, driverData)
+    axios.post(baseUrl, userDriver)
     .then((response) => {
         console.log(response)
         console.log('nice');

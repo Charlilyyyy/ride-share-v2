@@ -39,17 +39,24 @@ const name = ref('')
 const closeModal = () => {
     emits('closeModal', false)
 }
+
+const { credentialsUser,setUser } = useCredentialsStore()
   
 const proceed = () => {
+  console.log(setUser.phone);
+  
     const baseURL = window.location.protocol+"//"+window.location.host+"/api/setName"
-    const userCred = useCredentialsStore()
-    userCred.$patch({
-                credentialsUser: {
-                    name: name
-                }
-            })
-            console.log(userCred.credentialsUser);
-    axios.post(baseURL,userCred.credentialsUser)
+    // const userCred = useCredentialsStore()
+    // userCred.$patch({
+    //             credentialsUser: {
+    //                 name: name.value
+    //             }
+    //         })
+    setUser({
+      phone: credentialsUser.phone,
+      name: name.value
+    })
+    axios.post(baseURL,credentialsUser)
         .then((response) => {
             console.log(response)
             if(props.userType == 'driver'){
